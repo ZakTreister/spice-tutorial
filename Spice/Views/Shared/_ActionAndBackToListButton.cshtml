@@ -1,0 +1,31 @@
+﻿@model SpiceAction
+
+<div class="row">
+    <div class="col-6">
+        @{
+            switch (Model.type)
+            {
+                case ActionType.Create:
+                    <input type="submit" class="btn btn-info form-control" value="Create" />
+                    break;
+                case ActionType.Edit:
+                    <input type="submit" class="btn btn-info form-control" asp-route-id="@Model.Id" value="Update" />
+                    break;
+                case ActionType.Delete:
+                    <input type="submit" class="btn btn-danger form-control" asp-route-id="@Model.Id" value="Delete" />
+                    break;
+                case ActionType.Details:
+                    <a class="btn btn-info form-control" asp-action="Edit" asp-route-Id="@Model.Id">Edit</a>
+                    
+                    break;
+                default:
+                    <input type="submit" class="btn btn-info form-control" value="Create" />
+                    break;
+            }
+        }
+
+    </div>
+    <div class="col-6">
+        <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+    </div>
+</div>
